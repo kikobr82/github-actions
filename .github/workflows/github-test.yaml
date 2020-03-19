@@ -14,9 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: ls -la
+      - run ls -la
+        working-directory: ./
+      - run: build.sh
         working-directory: ./scripts
-      - run: test.sh.sh
+      - run: test.sh
         working-directory: ./scripts
       - run: publish.sh
         working-directory: ./scripts
