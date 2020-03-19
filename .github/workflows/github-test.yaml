@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: docker://kikobr82/hello:v1
         with:
-          entrypoint: /bin/sh -c "echo Proxy $http_proxy $https_proxy"
+          entrypoint: /bin/sh -c "echo $http_proxy $https_proxy"
       - run: ./build.sh
         working-directory: ./scripts
       - run: ./test.sh
