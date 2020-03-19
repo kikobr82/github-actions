@@ -1,1 +1,1 @@
-echo "Building App"
+echo "Building App with proxy"
