@@ -1,4 +1,4 @@
-name: Labeler
+name: ActionsWorkflow
 on: [pull_request]
 
 jobs:
@@ -8,10 +8,12 @@ jobs:
     - uses: actions/labeler@v2
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
   complete:
     runs-on: self-hosted
 
     steps:
+      - uses: actions/checkout@v2
       - run: build.sh
         working-directory: ./scripts
       - run: test.sh.sh
