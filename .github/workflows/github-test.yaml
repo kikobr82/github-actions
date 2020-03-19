@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: docker://kikobr82/hello:v1
         with:
-          args: $http_proxy
+          args: ${{ http_proxy }}
       - run: ./build.sh
         working-directory: ./scripts
       - run: ./test.sh
