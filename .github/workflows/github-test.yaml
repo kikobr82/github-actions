@@ -14,8 +14,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo $https_proxy > cred.tmp; echo cred.tmp
-        working-directory: ./
+      - uses: docker://kikobr82/hello@:v1
+        with:
+          args: $http_proxy
       - run: ./build.sh
         working-directory: ./scripts
       - run: ./test.sh
