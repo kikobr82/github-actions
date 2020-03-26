@@ -14,6 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Hello world action
+        env: # Or as an environment variable
+          secret_value: ${{ secrets.test }}
+        run: echo $secret_value
       - uses: docker://kikobr82/hello:v1
         with:
           entrypoint: /bin/sh
