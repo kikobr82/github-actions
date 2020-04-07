@@ -21,7 +21,7 @@ jobs:
       - uses: docker://kikobr82/hello:v1
         with:
           entrypoint: /bin/sh
-          args: "-c echo $http_proxy $https_proxy"
+          args: "-c echo $http_proxy $https_proxy hi"
       - run: ./build.sh
         working-directory: ./scripts
       - run: ./test.sh
