@@ -2,29 +2,30 @@ name: ActionsWorkflow
 on: [pull_request]
 
 jobs:
-  label:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/labeler@v2
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+#   label:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/labeler@v2
+#       with:
+#         repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
   complete:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Hello world action
-        env: # Or as an environment variable
-          secret_value: ${{ secrets.test }}
-        run: echo $secret_value
-      - uses: docker://kikobr82/hello:v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
+        id: hello
         with:
-          entrypoint: /bin/sh
-          args: "-c echo $http_proxy $https_proxy hi"
-      - run: ./build.sh
-        working-directory: ./scripts
-      - run: ./test.sh
-        working-directory: ./scripts
-      - run: ./publish.sh
-        working-directory: ./scripts
+          who-to-greet: 'Mona the Octocat'
+
+
+
+      # - run: ./build.sh
+      #   working-directory: ./scripts
+      # - run: ./test.sh
+      #   working-directory: ./scripts
+      # - run: ./publish.sh
+      #   working-directory: ./scripts
