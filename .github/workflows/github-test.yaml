@@ -1,0 +1,31 @@
+name: ActionsWorkflow
+on: [pull_request]
+
+jobs:
+#   label:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/labeler@v2
+#       with:
+#         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  complete:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
+        uses: github-actions/test@test
+        id: hello
+        with:
+          who-to-greet: 'Mona th Octocat'
+
+
+
+      # - run: ./build.sh
+      #   working-directory: ./scripts
+      # - run: ./test.sh
+      #   working-directory: ./scripts
+      # - run: ./publish.sh
+      #   working-directory: ./scripts
